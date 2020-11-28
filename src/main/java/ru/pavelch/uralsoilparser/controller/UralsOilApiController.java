@@ -43,7 +43,6 @@ public class UralsOilApiController {
     ) {
         return oilPriceMonitoringEntries.stream()
                 .filter(entry -> entry.getStart().isBefore(endExclusiveDate) && entry.getEnd().isAfter(startInclusiveDate.minusDays(1)))
-                .peek(System.out::println)
                 .mapToDouble(PriceMonitoringEntry::getAveragePrice)
                 .average()
                 .orElse(0);
